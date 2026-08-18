@@ -5,6 +5,7 @@ import 'package:mymanager/app/router.dart';
 import 'package:mymanager/app/theme/app_theme.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(
     const ProviderScope(
       child: MyManagerApp(),
