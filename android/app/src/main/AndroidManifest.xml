@@ -3,11 +3,11 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
-        android:label="mymanager"
+        android:label="MyManager"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
-            android:name=".MainActivity"
+            android:name="com.mymanager.rent.MainActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:taskAffinity=""

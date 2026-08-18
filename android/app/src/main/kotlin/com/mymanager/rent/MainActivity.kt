@@ -1,4 +1,4 @@
-package com.mymanager.mymanager
+package com.mymanager.rent
 
 import io.flutter.embedding.android.FlutterActivity
 
