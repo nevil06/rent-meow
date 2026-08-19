@@ -31,6 +31,9 @@ node_modules/
 /build/
 /coverage/
 
+# Generated localization files (from l10n.yaml / generate: true)
+lib/l10n/app_localizations*.dart
+
 # Symbolication related
 app.*.symbols
 
