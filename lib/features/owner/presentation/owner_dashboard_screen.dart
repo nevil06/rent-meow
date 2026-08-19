@@ -15,10 +15,10 @@ class OwnerDashboardScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final rentRecords = ref.watch(rentRecordsProvider);
 
-    final overdueRecord = rentRecords.firstWhere(
-      (r) => r.status == 'overdue',
-      orElse: () => rentRecords.first,
-    );
+    final overdueRecord = rentRecords
+        .where((r) => r.status == 'overdue')
+        .followedBy(rentRecords)
+        .firstOrNull;
 
     return Scaffold(
       body: SafeArea(
@@ -83,6 +83,7 @@ class OwnerDashboardScreen extends ConsumerWidget {
               const SizedBox(height: 12),
 
               // Overdue Card
+              if (overdueRecord != null) ...[
               Card(
                 color: const Color(0xFF24141E),
                 shape: RoundedRectangleBorder(
@@ -136,7 +137,7 @@ class OwnerDashboardScreen extends ConsumerWidget {
                         Container(
                           padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
                           decoration: BoxDecoration(
-                            color: AppTheme.accentEmerald.withOpacity(0.2),
+                            color: AppTheme.accentEmerald.withValues(alpha: 0.2),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Row(
@@ -159,6 +160,7 @@ class OwnerDashboardScreen extends ConsumerWidget {
                 ),
               ),
               const SizedBox(height: 16),
+              ],
 
               // Expiring Agreement Alert
               Card(

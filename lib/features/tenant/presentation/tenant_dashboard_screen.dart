@@ -71,7 +71,7 @@ class _TenantDashboardScreenState extends ConsumerState<TenantDashboardScreen> {
                           Container(
                             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                             decoration: BoxDecoration(
-                              color: AppTheme.dangerOverdue.withOpacity(0.2),
+                              color: AppTheme.dangerOverdue.withValues(alpha: 0.2),
                               borderRadius: BorderRadius.circular(8),
                               border: Border.all(color: AppTheme.dangerOverdue),
                             ),
@@ -212,7 +212,7 @@ class _TenantDashboardScreenState extends ConsumerState<TenantDashboardScreen> {
                       trailing: Container(
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                         decoration: BoxDecoration(
-                          color: AppTheme.accentLime.withOpacity(0.2),
+                          color: AppTheme.accentLime.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(6),
                         ),
                         child: Text(

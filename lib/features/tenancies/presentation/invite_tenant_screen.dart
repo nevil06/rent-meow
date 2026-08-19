@@ -44,7 +44,7 @@ class _InviteTenantScreenState extends State<InviteTenantScreen> {
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: [
                     BoxShadow(
-                      color: AppTheme.accentLime.withOpacity(0.3),
+                      color: AppTheme.accentLime.withValues(alpha: 0.3),
                       blurRadius: 20,
                       spreadRadius: 2,
                     ),

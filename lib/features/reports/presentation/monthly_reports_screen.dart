@@ -81,7 +81,7 @@ class _MonthlyReportsScreenState extends State<MonthlyReportsScreen> {
                       ),
                       Switch(
                         value: _autoEmailOn,
-                        activeColor: AppTheme.accentLime,
+                        activeThumbColor: AppTheme.accentLime,
                         onChanged: (val) => setState(() => _autoEmailOn = val),
                       ),
                     ],
