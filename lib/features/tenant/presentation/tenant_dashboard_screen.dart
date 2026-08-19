@@ -34,26 +34,47 @@ class _TenantDashboardScreenState extends ConsumerState<TenantDashboardScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const HeaderTitle(
-                    title: 'TENANT PORTAL',
-                    subtitle: 'Green Residency - Unit 101',
+                    title: 'Tenant Portal',
+                    subtitle: 'Green Residency · Unit 101',
                   ),
-                  IconButton(
-                    icon: const Icon(Icons.swap_horiz, color: AppTheme.accentLime, size: 32),
-                    onPressed: () {
+                  InkWell(
+                    onTap: () {
                       ref.read(activeRoleProvider.notifier).state = UserRole.owner;
                       context.go('/owner');
                     },
-                    tooltip: 'Switch to Owner View',
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                      decoration: BoxDecoration(
+                        color: AppTheme.surfaceSubtle,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: AppTheme.cardBorder),
+                      ),
+                      child: Row(
+                        children: [
+                          const Icon(Icons.swap_horiz, color: AppTheme.accentLime, size: 18),
+                          const SizedBox(width: 6),
+                          Text(
+                            'Owner View',
+                            style: GoogleFonts.inter(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                              color: AppTheme.accentLime,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 18),
 
-              // Rent Payment Breakdown Card (Option A Disclosed Fee)
+              // Rent Payment Breakdown Card
               Card(
                 color: AppTheme.cardBg,
                 child: Padding(
-                  padding: const EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -61,59 +82,67 @@ class _TenantDashboardScreenState extends ConsumerState<TenantDashboardScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'AUGUST 2026 RENT',
+                            'August 2026 Rent',
                             style: GoogleFonts.syne(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w900,
-                              color: AppTheme.accentLime,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
+                              color: AppTheme.textPrimary,
                             ),
                           ),
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                             decoration: BoxDecoration(
-                              color: AppTheme.dangerOverdue.withValues(alpha: 0.2),
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(color: AppTheme.dangerOverdue),
+                              color: AppTheme.dangerOverdue.withValues(alpha: 0.15),
+                              borderRadius: BorderRadius.circular(6),
+                              border: Border.all(color: AppTheme.dangerOverdue.withValues(alpha: 0.4)),
                             ),
                             child: Text(
-                              'DUE AUG 05',
+                              'Due Aug 05',
                               style: GoogleFonts.syne(
-                                fontSize: 13,
-                                fontWeight: FontWeight.w900,
+                                fontSize: 11,
+                                fontWeight: FontWeight.w800,
                                 color: AppTheme.dangerOverdue,
                               ),
                             ),
                           ),
                         ],
                       ),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 14),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('Base Rent', style: GoogleFonts.inter(fontSize: 16, color: AppTheme.textSecondary)),
-                          Text('₹15,000', style: GoogleFonts.syne(fontSize: 18, fontWeight: FontWeight.w800)),
+                          Text('Base Rent', style: GoogleFonts.inter(fontSize: 13, color: AppTheme.textSecondary)),
+                          Text('₹15,000', style: GoogleFonts.syne(fontSize: 14, fontWeight: FontWeight.w700)),
                         ],
                       ),
-                      const SizedBox(height: 8),
+                      const SizedBox(height: 6),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('Payment Gateway Fee (Disclosed)', style: GoogleFonts.inter(fontSize: 14, color: AppTheme.textMuted)),
-                          Text('₹300', style: GoogleFonts.inter(fontSize: 14, color: AppTheme.textMuted)),
+                          Text('Gateway Fee (Disclosed)', style: GoogleFonts.inter(fontSize: 12, color: AppTheme.textMuted)),
+                          Text('₹300', style: GoogleFonts.inter(fontSize: 12, color: AppTheme.textMuted)),
                         ],
                       ),
-                      const Divider(color: AppTheme.cardBorder, height: 24),
+                      const Divider(color: AppTheme.cardBorder, height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('TOTAL AMOUNT', style: GoogleFonts.syne(fontSize: 18, fontWeight: FontWeight.w900)),
-                          Text('₹15,300', style: GoogleFonts.syne(fontSize: 26, fontWeight: FontWeight.w900, color: AppTheme.accentLime)),
+                          Text('Total Due', style: GoogleFonts.syne(fontSize: 14, fontWeight: FontWeight.w700)),
+                          Text(
+                            '₹15,300',
+                            style: GoogleFonts.syne(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w800,
+                              color: AppTheme.accentLime,
+                              letterSpacing: -0.5,
+                            ),
+                          ),
                         ],
                       ),
-                      const SizedBox(height: 18),
+                      const SizedBox(height: 14),
                       SeniorButton(
-                        label: 'PAY RENT NOW (₹15,300)',
-                        icon: Icons.payment,
+                        label: 'Pay Rent Now (₹15,300)',
+                        icon: Icons.bolt,
                         onPressed: () {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
@@ -127,26 +156,26 @@ class _TenantDashboardScreenState extends ConsumerState<TenantDashboardScreen> {
                   ),
                 ),
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 20),
 
               // Maintenance Section
               Text(
-                'REPORT A PROBLEM',
+                'Report an Issue',
                 style: GoogleFonts.syne(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w900,
-                  color: AppTheme.accentLime,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  color: AppTheme.textPrimary,
                 ),
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: 10),
               Card(
                 child: Padding(
-                  padding: const EdgeInsets.all(18.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SeniorChipSelector<String>(
-                        label: 'CATEGORY',
+                        label: 'Category',
                         options: const [
                           SeniorChipOption(label: '🚰 Plumbing', value: 'Plumbing'),
                           SeniorChipOption(label: '⚡ Electricity', value: 'Electricity'),
@@ -156,16 +185,16 @@ class _TenantDashboardScreenState extends ConsumerState<TenantDashboardScreen> {
                         selectedValue: _selectedCategory,
                         onSelected: (val) => setState(() => _selectedCategory = val),
                       ),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 12),
                       TextField(
                         controller: _maintDescController,
                         maxLines: 2,
-                        decoration: const InputDecoration(hintText: 'Describe the issue briefly...'),
+                        decoration: const InputDecoration(hintText: 'Briefly describe the issue...'),
                       ),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 12),
                       SeniorButton(
-                        label: 'SUBMIT MAINTENANCE REQUEST',
-                        icon: Icons.send,
+                        label: 'Submit Request',
+                        icon: Icons.send_rounded,
                         isSecondary: true,
                         onPressed: () {
                           if (_maintDescController.text.isNotEmpty) {
@@ -193,32 +222,59 @@ class _TenantDashboardScreenState extends ConsumerState<TenantDashboardScreen> {
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 18),
 
               // Active Maintenance Tickets List
               if (maintenanceList.isNotEmpty) ...[
                 Text(
-                  'YOUR ACTIVE REQUESTS',
-                  style: GoogleFonts.syne(fontSize: 16, fontWeight: FontWeight.w800, color: AppTheme.textSecondary),
+                  'Active Requests',
+                  style: GoogleFonts.syne(fontSize: 14, fontWeight: FontWeight.w700, color: AppTheme.textSecondary),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 8),
                 ...maintenanceList.map(
                   (m) => Card(
-                    margin: const EdgeInsets.only(bottom: 10),
-                    child: ListTile(
-                      leading: const Icon(Icons.build_circle, color: AppTheme.accentLime, size: 30),
-                      title: Text(m.title, style: GoogleFonts.syne(fontSize: 16, fontWeight: FontWeight.w800)),
-                      subtitle: Text('${m.description} (${m.date})', style: GoogleFonts.inter(fontSize: 14)),
-                      trailing: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                        decoration: BoxDecoration(
-                          color: AppTheme.accentLime.withValues(alpha: 0.2),
-                          borderRadius: BorderRadius.circular(6),
-                        ),
-                        child: Text(
-                          m.status.toUpperCase(),
-                          style: GoogleFonts.syne(fontSize: 12, fontWeight: FontWeight.w900, color: AppTheme.accentLime),
-                        ),
+                    margin: const EdgeInsets.only(bottom: 8),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: AppTheme.accentLime.withValues(alpha: 0.12),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: const Icon(Icons.build_outlined, color: AppTheme.accentLime, size: 18),
+                          ),
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  m.title,
+                                  style: GoogleFonts.syne(fontSize: 13, fontWeight: FontWeight.w700),
+                                ),
+                                const SizedBox(height: 2),
+                                Text(
+                                  '${m.description} · ${m.date}',
+                                  style: GoogleFonts.inter(fontSize: 12, color: AppTheme.textSecondary),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                            decoration: BoxDecoration(
+                              color: AppTheme.accentLime.withValues(alpha: 0.15),
+                              borderRadius: BorderRadius.circular(6),
+                            ),
+                            child: Text(
+                              m.status.toUpperCase(),
+                              style: GoogleFonts.syne(fontSize: 10, fontWeight: FontWeight.w800, color: AppTheme.accentLime),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),

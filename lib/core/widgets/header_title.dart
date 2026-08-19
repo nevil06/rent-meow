@@ -18,21 +18,21 @@ class HeaderTitle extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          title.toUpperCase(),
+          title,
           style: GoogleFonts.syne(
-            fontSize: 26,
-            fontWeight: FontWeight.w900,
-            letterSpacing: 0.8,
-            color: AppTheme.accentLime,
+            fontSize: 22,
+            fontWeight: FontWeight.w800,
+            letterSpacing: -0.3,
+            color: AppTheme.textPrimary,
           ),
         ),
         if (subtitle != null) ...[
-          const SizedBox(height: 4),
+          const SizedBox(height: 3),
           Text(
             subtitle!,
             style: GoogleFonts.inter(
-              fontSize: 16,
-              fontWeight: FontWeight.w500,
+              fontSize: 13,
+              fontWeight: FontWeight.w400,
               color: AppTheme.textSecondary,
             ),
           ),

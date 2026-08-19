@@ -21,7 +21,10 @@ class _MonthlyReportsScreenState extends State<MonthlyReportsScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        iconTheme: const IconThemeData(color: AppTheme.accentLime, size: 28),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new, color: AppTheme.accentLime, size: 20),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
       ),
       body: SafeArea(
         child: Padding(
@@ -30,34 +33,34 @@ class _MonthlyReportsScreenState extends State<MonthlyReportsScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const HeaderTitle(
-                title: 'MONTHLY PDF REPORTS',
-                subtitle: 'August 2026 - Green Residency',
+                title: 'Monthly Reports',
+                subtitle: 'August 2026 · Green Residency',
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 18),
               Row(
                 children: [
                   Expanded(
                     child: MetricCard(
-                      label: 'EXPECTED',
+                      label: 'Expected',
                       value: '₹33,000',
-                      icon: Icons.account_balance_wallet,
+                      icon: Icons.account_balance_wallet_outlined,
                     ),
                   ),
-                  const SizedBox(width: 12),
+                  const SizedBox(width: 10),
                   Expanded(
                     child: MetricCard(
-                      label: 'COLLECTED',
+                      label: 'Collected',
                       value: '₹18,000',
                       accentColor: AppTheme.accentEmerald,
-                      icon: Icons.check_circle,
+                      icon: Icons.check_circle_outline,
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 18),
               Card(
                 child: Padding(
-                  padding: const EdgeInsets.all(18.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -65,17 +68,17 @@ class _MonthlyReportsScreenState extends State<MonthlyReportsScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'AUTOMATIC EMAIL REPORTS',
+                            'Automatic Email Reports',
                             style: GoogleFonts.syne(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w800,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w700,
                               color: AppTheme.textPrimary,
                             ),
                           ),
-                          const SizedBox(height: 4),
+                          const SizedBox(height: 3),
                           Text(
-                            'Email PDF on 1st of every month',
-                            style: GoogleFonts.inter(fontSize: 14, color: AppTheme.textSecondary),
+                            'Send PDF to email on 1st of every month',
+                            style: GoogleFonts.inter(fontSize: 12, color: AppTheme.textSecondary),
                           ),
                         ],
                       ),
@@ -90,8 +93,8 @@ class _MonthlyReportsScreenState extends State<MonthlyReportsScreen> {
               ),
               const Spacer(),
               SeniorButton(
-                label: 'GENERATE & DOWNLOAD PDF',
-                icon: Icons.picture_as_pdf,
+                label: 'Generate & Download PDF',
+                icon: Icons.picture_as_pdf_outlined,
                 onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
@@ -101,7 +104,7 @@ class _MonthlyReportsScreenState extends State<MonthlyReportsScreen> {
                   );
                 },
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 12),
             ],
           ),
         ),

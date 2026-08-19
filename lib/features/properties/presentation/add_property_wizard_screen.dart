@@ -30,7 +30,7 @@ class _AddPropertyWizardScreenState extends ConsumerState<AddPropertyWizardScree
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: AppTheme.accentLime, size: 28),
+          icon: const Icon(Icons.arrow_back_ios_new, color: AppTheme.accentLime, size: 20),
           onPressed: () {
             if (_step > 1) {
               setState(() => _step--);
@@ -42,50 +42,50 @@ class _AddPropertyWizardScreenState extends ConsumerState<AddPropertyWizardScree
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               HeaderTitle(
-                title: 'ADD NEW PROPERTY',
+                title: 'Add New Property',
                 subtitle: 'Step $_step of 3',
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 20),
 
               if (_step == 1) ...[
                 Text(
-                  'PROPERTY NAME'.toUpperCase(),
+                  'Property Name',
                   style: GoogleFonts.inter(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
                     color: AppTheme.textSecondary,
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 8),
                 TextField(
                   controller: _nameController,
-                  style: GoogleFonts.syne(fontSize: 20, fontWeight: FontWeight.w800),
+                  style: GoogleFonts.syne(fontSize: 16, fontWeight: FontWeight.w700),
                   decoration: const InputDecoration(hintText: 'e.g. Green Residency'),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 16),
                 Text(
-                  'ADDRESS'.toUpperCase(),
+                  'Full Address',
                   style: GoogleFonts.inter(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
                     color: AppTheme.textSecondary,
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 8),
                 TextField(
                   controller: _addressController,
                   maxLines: 2,
-                  style: GoogleFonts.syne(fontSize: 18, fontWeight: FontWeight.w700),
-                  decoration: const InputDecoration(hintText: 'Full property address'),
+                  style: GoogleFonts.syne(fontSize: 15, fontWeight: FontWeight.w600),
+                  decoration: const InputDecoration(hintText: 'Enter complete property address'),
                 ),
               ] else if (_step == 2) ...[
                 SeniorChipSelector<int>(
-                  label: 'NUMBER OF FLOORS',
+                  label: 'Number of Floors',
                   options: const [
                     SeniorChipOption(label: '1 Floor', value: 1),
                     SeniorChipOption(label: '2 Floors', value: 2),
@@ -95,9 +95,9 @@ class _AddPropertyWizardScreenState extends ConsumerState<AddPropertyWizardScree
                   selectedValue: _selectedFloors,
                   onSelected: (val) => setState(() => _selectedFloors = val),
                 ),
-                const SizedBox(height: 28),
+                const SizedBox(height: 20),
                 SeniorChipSelector<int>(
-                  label: 'UNITS PER FLOOR',
+                  label: 'Units Per Floor',
                   options: const [
                     SeniorChipOption(label: '1 Unit', value: 1),
                     SeniorChipOption(label: '2 Units', value: 2),
@@ -109,7 +109,7 @@ class _AddPropertyWizardScreenState extends ConsumerState<AddPropertyWizardScree
                 ),
               ] else ...[
                 SeniorChipSelector<double>(
-                  label: 'DEFAULT MONTHLY RENT (₹)',
+                  label: 'Default Monthly Rent (₹)',
                   options: const [
                     SeniorChipOption(label: '₹10,000', value: 10000),
                     SeniorChipOption(label: '₹15,000', value: 15000),
@@ -124,8 +124,8 @@ class _AddPropertyWizardScreenState extends ConsumerState<AddPropertyWizardScree
 
               const Spacer(),
               SeniorButton(
-                label: _step < 3 ? 'NEXT STEP' : 'SAVE PROPERTY',
-                icon: _step < 3 ? Icons.arrow_forward : Icons.check_circle,
+                label: _step < 3 ? 'Next Step' : 'Save Property',
+                icon: _step < 3 ? Icons.arrow_forward_rounded : Icons.check_circle_outline,
                 onPressed: () {
                   if (_step < 3) {
                     setState(() => _step++);
@@ -150,7 +150,7 @@ class _AddPropertyWizardScreenState extends ConsumerState<AddPropertyWizardScree
                   }
                 },
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 12),
             ],
           ),
         ),

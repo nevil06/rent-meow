@@ -24,62 +24,67 @@ class _InviteTenantScreenState extends State<InviteTenantScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        iconTheme: const IconThemeData(color: AppTheme.accentLime, size: 28),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new, color: AppTheme.accentLime, size: 20),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const HeaderTitle(
-                title: 'INVITE TENANT',
-                subtitle: 'Green Residency - Unit 103',
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: HeaderTitle(
+                  title: 'Invite Tenant',
+                  subtitle: 'Green Residency · Unit 103',
+                ),
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 28),
               Container(
-                padding: const EdgeInsets.all(20),
+                padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
-                      color: AppTheme.accentLime.withValues(alpha: 0.3),
-                      blurRadius: 20,
-                      spreadRadius: 2,
+                      color: AppTheme.accentLime.withValues(alpha: 0.2),
+                      blurRadius: 16,
+                      spreadRadius: 1,
                     ),
                   ],
                 ),
                 child: QrImageView(
                   data: inviteUrl,
                   version: QrVersions.auto,
-                  size: 200.0,
+                  size: 180.0,
                   backgroundColor: Colors.white,
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 18),
               Text(
-                'POINT TENANT\'S CAMERA HERE',
+                'Point tenant\'s camera to scan',
                 style: GoogleFonts.syne(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w900,
-                  color: AppTheme.accentLime,
-                  letterSpacing: 0.5,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
+                  color: AppTheme.textPrimary,
                 ),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 4),
               Text(
                 'Token: $_token',
                 style: GoogleFonts.inter(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
                   color: AppTheme.textSecondary,
                 ),
               ),
-              const SizedBox(height: 32),
+              const SizedBox(height: 28),
               SeniorButton(
-                label: 'SHARE INVITATION LINK / SMS',
-                icon: Icons.share,
+                label: 'Share Invitation Link / SMS',
+                icon: Icons.share_outlined,
                 onPressed: () {
                   Share.share(
                     'You are invited to join Green Residency Unit 103 on MyManager! Click to accept: $inviteUrl',

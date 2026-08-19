@@ -25,55 +25,79 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 20.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 20),
-              const HeaderTitle(
-                title: 'MYMANAGER',
-                subtitle: 'Manage your rent. Manage your property. Simply.',
+              const SizedBox(height: 12),
+              Row(
+                children: [
+                  Container(
+                    width: 38,
+                    height: 38,
+                    decoration: BoxDecoration(
+                      color: AppTheme.accentLime.withValues(alpha: 0.15),
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: AppTheme.accentLime.withValues(alpha: 0.3)),
+                    ),
+                    child: const Icon(Icons.home_work_outlined, color: AppTheme.accentLime, size: 20),
+                  ),
+                  const SizedBox(width: 10),
+                  Text(
+                    'MyManager',
+                    style: GoogleFonts.syne(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w800,
+                      color: AppTheme.textPrimary,
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 24),
+              const HeaderTitle(
+                title: 'Welcome Back',
+                subtitle: 'Manage rent, properties, and payments effortlessly.',
+              ),
+              const SizedBox(height: 28),
               SeniorChipSelector<UserRole>(
-                label: 'I am an:',
+                label: 'Choose your role',
                 options: const [
-                  SeniorChipOption(label: '🏠 LANDLORD / OWNER', value: UserRole.owner),
-                  SeniorChipOption(label: '🔑 TENANT / RENTER', value: UserRole.tenant),
+                  SeniorChipOption(label: '🏠 Landlord / Owner', value: UserRole.owner),
+                  SeniorChipOption(label: '🔑 Tenant / Renter', value: UserRole.tenant),
                 ],
                 selectedValue: activeRole,
                 onSelected: (role) {
                   ref.read(activeRoleProvider.notifier).state = role;
                 },
               ),
-              const SizedBox(height: 32),
+              const SizedBox(height: 24),
               Text(
-                'MOBILE PHONE NUMBER'.toUpperCase(),
+                'Mobile Phone Number',
                 style: GoogleFonts.inter(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
                   color: AppTheme.textSecondary,
-                  letterSpacing: 0.5,
+                  letterSpacing: 0.3,
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 8),
               TextField(
                 controller: _phoneController,
                 keyboardType: TextInputType.phone,
                 style: GoogleFonts.syne(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w800,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
                   color: AppTheme.textPrimary,
                 ),
                 decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.phone_android, color: AppTheme.accentLime, size: 28),
-                  hintText: 'Enter 10-digit number',
+                  prefixIcon: Icon(Icons.phone_android_outlined, color: AppTheme.accentLime, size: 20),
+                  hintText: 'Enter 10-digit mobile number',
                 ),
               ),
               const Spacer(),
               SeniorButton(
-                label: 'GET OTP & CONTINUE',
-                icon: Icons.arrow_forward,
+                label: 'Get OTP & Continue',
+                icon: Icons.arrow_forward_rounded,
                 onPressed: () {
                   if (activeRole == UserRole.owner) {
                     context.go('/owner');
@@ -82,7 +106,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                   }
                 },
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 12),
             ],
           ),
         ),

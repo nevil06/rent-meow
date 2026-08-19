@@ -29,42 +29,40 @@ class SeniorChipSelector<T> extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          label.toUpperCase(),
+          label,
           style: GoogleFonts.inter(
-            fontSize: 14,
-            fontWeight: FontWeight.w700,
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
             color: AppTheme.textSecondary,
             letterSpacing: 0.5,
           ),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 8),
         Wrap(
-          spacing: 12,
-          runSpacing: 12,
+          spacing: 8,
+          runSpacing: 8,
           children: options.map((opt) {
             final isSelected = opt.value == selectedValue;
             return InkWell(
               onTap: () => onSelected(opt.value),
-              borderRadius: BorderRadius.circular(12),
-              child: Container(
-                constraints: const BoxConstraints(minHeight: 52, minWidth: 70),
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+              borderRadius: BorderRadius.circular(10),
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 150),
+                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
                 decoration: BoxDecoration(
-                  color: isSelected ? AppTheme.accentLime : const Color(0xFF0F172A),
-                  borderRadius: BorderRadius.circular(12),
+                  color: isSelected ? AppTheme.accentLime : AppTheme.surfaceSubtle,
+                  borderRadius: BorderRadius.circular(10),
                   border: Border.all(
                     color: isSelected ? AppTheme.accentLime : AppTheme.cardBorder,
-                    width: 2,
+                    width: 1.0,
                   ),
                 ),
-                child: Center(
-                  child: Text(
-                    opt.label,
-                    style: GoogleFonts.syne(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w900,
-                      color: isSelected ? Colors.black : AppTheme.textPrimary,
-                    ),
+                child: Text(
+                  opt.label,
+                  style: GoogleFonts.syne(
+                    fontSize: 13,
+                    fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
+                    color: isSelected ? const Color(0xFF080C14) : AppTheme.textPrimary,
                   ),
                 ),
               ),

@@ -14,60 +14,63 @@ class TenantAcceptInviteScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        iconTheme: const IconThemeData(color: AppTheme.accentLime, size: 28),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new, color: AppTheme.accentLime, size: 20),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const HeaderTitle(
-                title: 'TENANCY INVITATION',
-                subtitle: 'Token Validated via Secure Link',
+                title: 'Tenancy Invitation',
+                subtitle: 'Validated via secure invitation link',
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 18),
               Card(
                 child: Padding(
-                  padding: const EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'GREEN RESIDENCY - UNIT 103',
+                        'Green Residency · Unit 103',
                         style: GoogleFonts.syne(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w900,
-                          color: AppTheme.accentLime,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w800,
+                          color: AppTheme.textPrimary,
                         ),
                       ),
-                      const SizedBox(height: 8),
+                      const SizedBox(height: 4),
                       Text(
                         'Landlord: Ramesh Kumar',
-                        style: GoogleFonts.inter(fontSize: 16, color: AppTheme.textSecondary),
+                        style: GoogleFonts.inter(fontSize: 13, color: AppTheme.textSecondary),
                       ),
-                      const Divider(color: AppTheme.cardBorder, height: 24),
+                      const Divider(color: AppTheme.cardBorder, height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('Monthly Rent', style: GoogleFonts.inter(fontSize: 16)),
-                          Text('₹15,000', style: GoogleFonts.syne(fontSize: 20, fontWeight: FontWeight.w900)),
+                          Text('Monthly Rent', style: GoogleFonts.inter(fontSize: 13, color: AppTheme.textSecondary)),
+                          Text('₹15,000', style: GoogleFonts.syne(fontSize: 15, fontWeight: FontWeight.w800)),
                         ],
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 8),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('Security Deposit', style: GoogleFonts.inter(fontSize: 16)),
-                          Text('₹30,000', style: GoogleFonts.syne(fontSize: 20, fontWeight: FontWeight.w900)),
+                          Text('Security Deposit', style: GoogleFonts.inter(fontSize: 13, color: AppTheme.textSecondary)),
+                          Text('₹30,000', style: GoogleFonts.syne(fontSize: 15, fontWeight: FontWeight.w800)),
                         ],
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 8),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('Agreement Term', style: GoogleFonts.inter(fontSize: 16)),
-                          Text('11 Months', style: GoogleFonts.syne(fontSize: 18, fontWeight: FontWeight.w800)),
+                          Text('Agreement Term', style: GoogleFonts.inter(fontSize: 13, color: AppTheme.textSecondary)),
+                          Text('11 Months', style: GoogleFonts.syne(fontSize: 14, fontWeight: FontWeight.w700)),
                         ],
                       ),
                     ],
@@ -76,8 +79,8 @@ class TenantAcceptInviteScreen extends StatelessWidget {
               ),
               const Spacer(),
               SeniorButton(
-                label: 'ACCEPT TENANCY & JOIN',
-                icon: Icons.check_circle,
+                label: 'Accept Tenancy & Join',
+                icon: Icons.check_circle_outline,
                 onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
@@ -88,14 +91,14 @@ class TenantAcceptInviteScreen extends StatelessWidget {
                   context.go('/tenant');
                 },
               ),
-              const SizedBox(height: 14),
+              const SizedBox(height: 10),
               SeniorButton(
-                label: 'DECLINE INVITATION',
+                label: 'Decline Invitation',
                 isSecondary: true,
                 isDanger: true,
                 onPressed: () => context.pop(),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 12),
             ],
           ),
         ),

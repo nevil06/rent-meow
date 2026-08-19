@@ -20,15 +20,18 @@ class SeniorButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final primaryColor = isDanger ? AppTheme.dangerOverdue : AppTheme.accentLime;
+
     if (isSecondary) {
       return OutlinedButton(
         onPressed: onPressed,
         style: OutlinedButton.styleFrom(
-          minimumSize: const Size.fromHeight(AppTheme.minTouchTarget),
+          minimumSize: const Size.fromHeight(AppTheme.buttonHeight),
           side: BorderSide(
-            color: isDanger ? AppTheme.dangerOverdue : AppTheme.accentLime,
-            width: 2,
+            color: isDanger ? AppTheme.dangerOverdue : AppTheme.cardBorder,
+            width: 1.0,
           ),
+          backgroundColor: AppTheme.surfaceSubtle,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppTheme.borderRadius),
           ),
@@ -37,15 +40,16 @@ class SeniorButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (icon != null) ...[
-              Icon(icon, size: 24, color: isDanger ? AppTheme.dangerOverdue : AppTheme.accentLime),
-              const SizedBox(width: 10),
+              Icon(icon, size: 18, color: isDanger ? AppTheme.dangerOverdue : AppTheme.textPrimary),
+              const SizedBox(width: 8),
             ],
             Text(
-              label.toUpperCase(),
+              label,
               style: GoogleFonts.syne(
-                fontSize: 18,
-                fontWeight: FontWeight.w900,
-                color: isDanger ? AppTheme.dangerOverdue : AppTheme.accentLime,
+                fontSize: 14,
+                fontWeight: FontWeight.w700,
+                letterSpacing: 0.2,
+                color: isDanger ? AppTheme.dangerOverdue : AppTheme.textPrimary,
               ),
             ),
           ],
@@ -53,15 +57,15 @@ class SeniorButton extends StatelessWidget {
       );
     }
 
-    final bgColor = isDanger ? AppTheme.dangerOverdue : AppTheme.accentLime;
-    final fgColor = isDanger ? Colors.white : Colors.black;
+    final fgColor = isDanger ? Colors.white : const Color(0xFF080C14);
 
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor: bgColor,
+        backgroundColor: primaryColor,
         foregroundColor: fgColor,
-        minimumSize: const Size.fromHeight(AppTheme.minTouchTarget),
+        minimumSize: const Size.fromHeight(AppTheme.buttonHeight),
+        elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppTheme.borderRadius),
         ),
@@ -70,14 +74,15 @@ class SeniorButton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           if (icon != null) ...[
-            Icon(icon, size: 24, color: fgColor),
-            const SizedBox(width: 10),
+            Icon(icon, size: 18, color: fgColor),
+            const SizedBox(width: 8),
           ],
           Text(
-            label.toUpperCase(),
+            label,
             style: GoogleFonts.syne(
-              fontSize: 18,
-              fontWeight: FontWeight.w900,
+              fontSize: 14,
+              fontWeight: FontWeight.w800,
+              letterSpacing: 0.3,
               color: fgColor,
             ),
           ),
