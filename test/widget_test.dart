@@ -12,8 +12,8 @@ void main() {
     );
 
     // Verify app title and role selector render
-    expect(find.text('MYMANAGER'), findsOneWidget);
-    expect(find.textContaining('LANDLORD'), findsOneWidget);
-    expect(find.textContaining('TENANT'), findsOneWidget);
+    expect(find.text('MyManager'), findsOneWidget);
+    expect(find.textContaining('Landlord'), findsOneWidget);
+    expect(find.textContaining('Tenant'), findsOneWidget);
   });
 }
